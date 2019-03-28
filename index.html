@@ -1,0 +1,201 @@
+<!doctype html>
+
+<html lang="zh-TW">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Offer a restaurant choice to you.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>我現在要吃什麼</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Link jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
+    <header
+      class="demo-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
+      <div class="mdl-layout__header-row">
+        <span class="mdl-layout-title">YZU Eat choice &nbsp;&nbsp;</span>
+        <span class="mdl-layout-title" onmouseover="bigImg()" onmouseout="normalImg()"
+          style="font-family:inherit;">餐廳輪值表 &nbsp;&nbsp;</span>
+        <img id="info"></img>
+        <span class="mdl-layout-title" style="position:relative;">
+          <a href="https://www.yzu.edu.tw/admin/st/index.php/tw/2016-07-12-07-44-41/2017-01-10-08-17-54/2016-12-06-05-34-35"
+            style="font-family: 'Noto Sans TC', sans-serif;">餐廳資訊</a>
+        </span>
+        <img id="info"></img>
+
+        <script>
+          function bigImg() {
+            document.getElementById("info").setAttribute("src", "https://www.yzu.edu.tw/admin/st/images/1072餐廳假日輪值表.JPG");
+            document.getElementById("info").setAttribute("alt", "1072餐廳假日輪值表.JPG");
+            document.getElementById("info").setAttribute("class", "infoClass");
+          }
+
+          function normalImg() {
+            document.getElementById("info").setAttribute("src", "");
+            document.getElementById("info").setAttribute("alt", "");
+            document.getElementById("info").setAttribute("class", "");
+          }
+        </script>
+
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+          <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+            <i class="material-icons">search</i>
+          </label>
+          <div class="mdl-textfield__expandable-holder">
+            <input class="mdl-textfield__input" type="text" id="search">
+            <label class="mdl-textfield__label" for="search">Enter your query...</label>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="demo-ribbon"></div>
+    <main class="demo-main mdl-layout__content">
+      <div class="demo-container mdl-grid">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div
+          class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+          <div style="text-align: center;" class="demo-crumbs mdl-color-text--grey-500">
+            現在就去吃
+          </div>
+
+          <h1 style="text-align: center;" id="demo"></h1>
+          <h5 style="text-align: center;" id="demoPlace"></h5>
+          <img id="demoMenu">
+          <embed id="demoMenuPdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"  width="650" height="500">
+
+          <script>
+            let info = [];
+
+            // Name, Address, open time, menu link, menu File type
+            //Type: 1 = .pdf; 2 = .jpg; 3 = .png;
+
+            info[0] = ["iicafe幸福村", "美食一街", "", "https://www.yzu.edu.tw/admin/st/files/美一iicafe幸福村菜單.pdf", "1"];
+
+            info[1] = ["陶邑心情", "美食二街", "", "https://www.yzu.edu.tw/admin/st/files/%E9%99%B6%E9%82%91%E5%BF%83%E6%83%85.pdf", "1"];
+            info[2] = ["可口坊", "美食二街", "", "https://www.yzu.edu.tw/admin/st/files/%E5%8F%AF%E5%8F%A3%E5%9D%8A.jpg", "2"];
+            info[3] = ["鮮豆屋", "美食二街", "", "https://www.yzu.edu.tw/admin/st/files/%E9%AE%AE%E8%B1%86%E5%B1%8B.pdf", "1"];
+            info[4] = ["串里春秋串燒屋", "美食二街", "", "https://www.yzu.edu.tw/admin/st/files/%E4%B8%B2%E7%87%92%E5%B1%8B.jpg", "2"];
+
+            info[5] = ["冰窖", "美食三街", "", "https://www.yzu.edu.tw/admin/st/files/%E5%86%B0%E7%AA%96Menu.pdf", "1"];
+            info[6] = ["陽光早餐", "美食三街", "", "https://www.yzu.edu.tw/admin/st/files/%E9%99%BD%E5%85%89%E6%97%A9%E9%A4%90.PNG", "3"];
+            info[7] = ["仙桃", "美食三街", "", "https://www.yzu.edu.tw/admin/st/files/%E4%BB%99%E6%A1%83%E7%B8%BD%E9%8B%AA.jpg", "2"];
+            info[8] = ["自助餐", "美食三街", "", "", ""];
+
+            info[9] = ["喜樂早餐店", "全家旁", "", "https://www.yzu.edu.tw/admin/st/files/%E5%96%9C%E6%A8%82%E6%97%A9%E9%A4%90.pdf", "1"];
+            info[10] = ["全家FamiMart", "全家就是你家，享受生活零時差。", "6:00 - 23:30", "https://ct.yimg.com/xd/api/res/1.2/nFF87DMIn.SZ.DZDQjFrIw--/YXBwaWQ9eXR3YXVjdGlvbnNlcnZpY2U7aD03MDA7cT04NTtyb3RhdGU9YXV0bzt3PTcwMA--/https://s.yimg.com/ob/image/83fc3b82-9337-49e0-bf2e-4e2e672b2334.jpg", "2"];
+            info[11] = ["十字路口", "美食三街", "", "https://www.yzu.edu.tw/admin/st/files/%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3.jpg", "2"];
+
+            info[12] = ["美而美", "二宿一樓", "", "https://www.yzu.edu.tw/admin/st/files/%E7%BE%8E%E8%80%8C%E7%BE%8E.jpg", "2"];
+            info[13] = ["饌煲", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E9%A5%8C%E7%85%B2.jpg", "2"];
+            info[14] = ["嵐媽的店", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E5%B5%90%E5%AA%BD.jpg", "2"];
+            info[15] = ["好客食堂", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E5%B5%90%E5%AA%BD.jpg", "2"];
+            info[16] = ["山口壽司", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E5%B1%B1%E5%8F%A3%E5%A3%BD%E5%8F%B8.jpg", "2"];
+            info[22] = ["瘋咖哩南洋小吃", "二宿一樓", "", "https://www.yzu.edu.tw/admin/st/files/%E7%98%8B%E5%92%96%E5%93%A9.jpg", "2"];
+            info[17] = ["八方雲集", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E5%85%AB%E6%96%B9%E9%9B%B2%E9%9B%86.jpg", "2"];
+            info[18] = ["A華滷味", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/A%E8%8F%AF.jpg", "2"];
+            info[19] = ["茶四方", "二宿二樓", "", "https://www.yzu.edu.tw/admin/st/files/%E8%8C%B6%E5%9B%9B%E6%96%B9.jpg", "2"];
+
+            info[20] = ["小木屋", "五館左側", "", "https://www.yzu.edu.tw/admin/st/files/%E5%B0%8F%E6%9C%A8%E5%B1%8B.jpg", "2"];
+            info[21] = ["卡利亞里", "二館旁", "", "https://www.yzu.edu.tw/admin/st/files/%E5%8D%A1%E5%88%A9%E4%BA%9E%E9%87%8C.jpg", "2"];
+
+            info[23] = ["UBER Eats", "你手機裡", "00:00 - 24:00", "https://media2.fdncms.com/arktimes/imager/u/original/15677337/ubereats_banner.png", "3"];
+
+
+            var choice = Math.floor(Math.random() * 24);
+            document.getElementById("demo").innerHTML = info[choice][0];
+            document.getElementById("demoPlace").innerHTML = info[choice][1];
+
+            if (info[choice][4] == "2") {
+              var pic = document.getElementById("demoMenu");
+              pic.setAttribute("src", info[choice][3]);
+              pic.setAttribute("alt", "Menu.jpg");
+            }
+            else if (info[choice][4] == "3") {
+              var pic = document.getElementById("demoMenu");
+              pic.setAttribute("src", info[choice][3]);
+              pic.setAttribute("alt", "Menu.png");
+            }
+            else if (info[choice][4] == "1") {
+              var pic = document.getElementById("demoMenuPdf");
+              pic.setAttribute("src", info[choice][3]);
+              pic.setAttribute("alt", "Menu.pdf");
+            }
+
+            // $(document).ready() 
+            // $(function () {
+            //   /* 判斷連結的內容，並依內容再連結後加上相對應的圖片 */
+            //   $("a[href$='.png']").after("<img src='mp3.gif' alt='' align='absmiddle' />");
+            //   $("a[href$='.pdf']").after("<img src='pdf.gif' alt='' align='absmiddle' />");
+            //   $("a[href$='.jpg']").after("<img src='word.gif' alt='' align='absmiddle' />");
+            // });
+
+            /*window.alert("選餐啦~");
+            // window.alert("還沒想好要吃什麼?\n我來幫你~");
+            var day;
+            day = Math.floor(Math.random() * 8);
+            switch (day) {
+              case 0:
+                day = "二宿二樓";
+                break;
+              case 1:
+                day = "二宿一樓";
+                break;
+              case 2:
+                day = "美食一街";
+                break;
+              case 3:
+                day = "美食二街";
+                break;
+              case 4:
+                day = "美食三街";
+                break;
+              case 5:
+                day = "美而美";
+                break;
+              case 6:
+                day = "屎比較快";
+                break;
+              case 7:
+                day = "UBER Eat";
+                break;
+            }*/
+            //document.getElementById("demo").innerHTML = day;
+          </script>
+        </div>
+      </div>
+    </main>
+  </div>
+  <a href="#" onclick="javascript:window.location.reload()" id="view-source"
+    class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">覺得不好吃?</a>
+  <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+
+</html>
